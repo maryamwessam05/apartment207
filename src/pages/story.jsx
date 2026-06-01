@@ -5,7 +5,7 @@ const Story = () => {
     return ( 
         <>
         <div className="story">
-            
+            <h1>Why are you here?</h1>
         </div>
         </>
      );
