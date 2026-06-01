@@ -1,12 +1,12 @@
 @font-face {
-    font-family: "Lifta";
+    font-family: "Lifta swash poster";
     src: url("../assets/fonts/alfont_com_Liftaswashposter.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
   }
   
   @font-face {
-    font-family: "MyFont";
+    font-family: "Awesome Shorten";
     src: url("../assets/fonts/Awesome-Shorten-BF6781e4db99e2b.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
@@ -16,6 +16,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    height: inherit;
+    width: inherit;
 }
 
 .splash{
@@ -28,7 +35,7 @@
     width: 100%;
     object-fit: cover;
     position: absolute;
-    top: 0;
+    top: -200px;
     left: 0;
     
 }
@@ -42,6 +49,150 @@ main{
 }
 
 .title{
-    z-index: 98;
+    z-index: 2;
     position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.titlewhite{
+    color: #FFF;
+text-align: center;
+font-family: "Lifta swash poster";
+font-size: 200px;
+font-style: normal;
+font-weight: 1000;
+line-height: 79.145%; /* 174.119px */
+width: 40%;
+}
+
+
+@keyframes fadeInUp {
+    0% {
+        transform: translateY(350px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+.buttonpri{
+    transform: translateY(350px);
+       opacity: 0;
+    animation: fadeInUp 1s ease-out 1.5s forwards; 
+    cursor: pointer;
+}
+
+.yellow{
+    background: #FAE186;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: 97;
+    opacity: 0;
+    pointer-events: none; 
+}
+
+.levels{
+    width: 100%;
+    height: 100vh;
+    background-image: url("../assets/levelbg.jpg");
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.levelframe{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.leveltitle{
+    color: #FFF;
+text-align: center;
+font-family: "Awesome Shorten";
+font-size: 50px;
+font-style: normal;
+font-weight: 400;
+line-height: 79.145%; /* 39.572px */
+letter-spacing: 13.5px;
+position: relative;
+top: -27px;;
+}
+
+.levname{
+    display: flex;
+height: 63px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+flex-shrink: 0;
+background: #312013;
+color: #FFF;
+text-align: center;
+font-family: "Awesome Shorten";
+font-size: 42px;
+font-style: normal;
+font-weight: 400;
+line-height: 79.145%; /* 39.572px */
+letter-spacing: 3px;
+width: 100%;
+text-transform: uppercase;
+}
+.lev{
+    width:305px;
+    height: 100%;
+    display: flex;
+padding: 166px 0 0 0;
+flex-direction: column;
+align-items: center;
+    background-image: url("../assets/1.png");
+        background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.lev2{
+    width:305px;
+    height: 100%;
+    display: flex;
+padding: 166px 0 0 0;
+flex-direction: column;
+align-items: center;
+    background-image: url("../assets/2lock.png");
+        background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.lev3{
+    width:305px;
+    height: 100%;
+    display: flex;
+padding: 166px 0 0 0;
+flex-direction: column;
+align-items: center;
+    background-image: url("../assets/3lock.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.levelcont{
+    display: inline-flex;
+align-items: center;
+gap: 15px;
+height: 430px;
 }
