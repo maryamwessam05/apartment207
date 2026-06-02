@@ -42,6 +42,7 @@ a{
 body{
     background-color: rgb(31, 15, 0);
     width: 100%;
+    overflow-x: hidden;
 }
 main{
     background-color: rgb(31, 15, 0);
@@ -207,6 +208,9 @@ height: 430px;
     display: flex;
 justify-content: center;
 align-items: center;
+flex-direction: column;
+gap: 80px;
+overflow: hidden;
 }
 
 .story h1{
@@ -216,4 +220,122 @@ font-size: 120px;
 font-style: normal;
 font-weight: 400;
 line-height: 93%; /* 148.733px */
+}
+.env {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+
+    animation: wiggle 3s ease-in-out infinite;
+    transform-origin: center;
+    cursor: pointer;
+}
+
+@keyframes wiggle {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(15deg);
+    }
+    50% {
+        transform: rotate(-15deg);
+    }
+    75% {
+        transform: rotate(15deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+.letter {
+  width: 334px;
+  height: 424px;
+
+  background-image: url("../assets/letter.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    top: 68%;
+    gap: 16px;
+    left: 0%;
+    transform: translateY(-20px);
+    padding-top: 80px;
+      transition: top 1.2s ease;
+}
+.lettermask {
+  width: 334px;
+  height: 424px;
+
+  clip-path: url(#letterClip);
+  overflow: hidden;
+  position: relative;
+  top
+  : -29%;
+    transition: top 1s ease;
+}
+
+.letter p{
+color: #2F1902;
+    text-align: center;
+    font-family: "Special Elite";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 147%;
+    width: 63%;
+}
+.envelope {
+  position: absolute;
+  width: 415px;
+  height: 446px;
+
+  top: -3%;
+  transition: top 1s ease;
+}
+
+
+.letter {
+  transition: transform 0.8s ease;
+}
+
+.env.opened {
+  animation: none;
+}
+
+.env.opened .letter {
+  top: 15%;
+}
+
+.env.opened .envelope {
+  top: 3%;
+}
+
+.env.opened .lettermask {
+  top: -22%;
+}
+
+.lvl1btn{
+    position: absolute;
+    bottom: 10%;
+}
+
+.envelope {
+    transition: filter 0.3s ease;
+}
+
+.env:hover .envelope {
+    filter:
+        drop-shadow(0 0 10px #ffffff6f)
+        drop-shadow(0 0 20px #ffffff6f)
+        drop-shadow(0 0 37.3px #ffffff6f);
 }
