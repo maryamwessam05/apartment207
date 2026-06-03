@@ -4,6 +4,7 @@ import Splash from './splashscreen';
 import Levels from './levels';
 import LevelOne from './levelone';
 import Story from './story';
+import MenuOverlay from './menu';
 
 const AppRoutes = () => {
     return ( 
@@ -15,6 +16,7 @@ const AppRoutes = () => {
                     <Route path="/levels" element={<Levels />} />
                     <Route path="/story" element={<Story />} />
                     <Route path="/levelone" element={<LevelOne />} />
+                    <Route path="/menu" element={<MenuOverlay />} />
 
 
                 </Routes>

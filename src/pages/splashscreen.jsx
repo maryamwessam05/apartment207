@@ -5,6 +5,7 @@ import TextType from '../components/TextType';
 import Button from '../components/button';
 import { useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
+import DustParticles from '../components/dust';
 
 const Splash = () => {
     const navigate = useNavigate();
@@ -32,6 +33,7 @@ const Splash = () => {
     return (
         <>
         <main>
+            <DustParticles />
         <div className="splash">
             <img ref={backRef} className='back' src={background} alt="" />
             <div ref={yellowRef} className="yellow"></div>
