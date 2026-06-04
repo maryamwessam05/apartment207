@@ -6,6 +6,8 @@ import Button from '../components/button';
 import { useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
 import DustParticles from '../components/dust';
+import swish from "../music/swish.mp3";
+
 
 const Splash = () => {
     const navigate = useNavigate();
@@ -13,6 +15,9 @@ const Splash = () => {
     const yellowRef = useRef(null);
 
     const handleStart = () => {
+    const audio = new Audio(swish);
+    audio.play();
+
     const tl = gsap.timeline({
         onComplete: () => navigate('/levels')
     });
@@ -20,12 +25,12 @@ const Splash = () => {
     tl.to(backRef.current, {
         scale: 2,
         transformOrigin: 'bottom center',
-        duration: 0.8,
+        duration: 0.85,
         ease: 'power2.in'
     })
     .to(yellowRef.current, {
         opacity: 1,
-        duration: 0.8,
+        duration: 0.15,
         ease: 'power2.in'
     });
 };

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect , useRef } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useMusic } from './musicprovider';
 import Splash from './splashscreen';
@@ -13,10 +13,16 @@ import { useClickSound } from '../hooks/useClickSound';
 const Layout = () => {
     const location = useLocation();
     const { pause, resume } = useMusic();
+    const prevPath = useRef(null);
     useClickSound('/music/key.mp3');
+
     useEffect(() => {
-        if (location.pathname === '/story') pause();
-        else resume();
+        if (location.pathname === '/story') {
+            pause();
+        } else if (prevPath.current === '/story') {
+            resume();
+        }
+        prevPath.current = location.pathname;
     }, [location.pathname]);
 
     return (

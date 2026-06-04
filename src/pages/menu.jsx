@@ -11,7 +11,7 @@ const MenuOverlay = ({ isOpen, onClose }) => {
 
     return (
         <div className={`menuOverlay ${isOpen ? "open" : ""}`} onClick={onClose}>
-            <div className="menu" onClick={(e) => e.stopPropagation()}>
+            <div className="menu" onClick={(e) => {e.stopPropagation();e.nativeEvent.stopImmediatePropagation();}}>
                 <div className="menucont">
                     <img src={menulogo} alt="Menu Logo" />
 
