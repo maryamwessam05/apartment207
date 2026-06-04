@@ -30,10 +30,14 @@ const Splash = () => {
     });
 };
 
+
+
     return (
         <>
         <main>
-            <DustParticles />
+            <DustParticles style={{ position: "absolute", inset: 0 , zIndex: 100 }} />
+            <audio autoPlay src="../music/Abdel Halim Hafez - Nebtady Menen ElHekaya  Short version  عبد الحليم حافظ - نبتدى منين الحكاية.mp3" autoPlay></audio>
+
         <div className="splash">
             <img ref={backRef} className='back' src={background} alt="" />
             <div ref={yellowRef} className="yellow"></div>

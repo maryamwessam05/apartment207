@@ -47,6 +47,7 @@ body{
 main{
     background-color: rgb(31, 15, 0);
     width: 100%;
+    position: relative;
 }
 
 .title{
@@ -186,7 +187,8 @@ font-weight: 400;
 line-height: 79.145%; /* 39.572px */
 letter-spacing: 13.5px;
 position: relative;
-top: -27px;;
+top: -27px;
+z-index: 9;
 }
 
 .levname{
@@ -287,7 +289,41 @@ line-height: 93%; /* 148.733px */
     transform-origin: center;
     cursor: pointer;
 }
+.fixed{
+    display: flex;
+justify-content: space-between;
+padding: 0 20px;
+width: 100%;
+position: absolute;
+top: 0;
 
+}
+.icons{
+    padding-top: 26px;
+    flex-direction: column;
+    display: flex;
+    gap: 20px;
+}
+.clue , .menuic{
+    cursor: pointer;
+}
+
+.clue:hover, .menuic:hover {
+    filter:
+        drop-shadow(0 0 10px #866747)
+        drop-shadow(0 0 25px rgba(134, 103, 71, 0.7));
+
+    animation: magicalSway 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes magicalSway {
+    from {
+        transform: translateY(-5px) rotate(-3deg) scale(1.05);
+    }
+    to {
+        transform: translateY(-8px) rotate(3deg) scale(1.08);
+    }
+}
 @keyframes wiggle {
     0% {
         transform: rotate(0deg);
@@ -468,7 +504,39 @@ width: 80%;
      align-items: center;
      background: rgba(0, 0, 0, 0.08);
 }
+.menuOverlay{
+    position: fixed;
+    inset: 0;
 
+    background: rgba(0,0,0,.65);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 999;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+      opacity .4s ease,
+      visibility .4s ease;
+}
+
+.menuOverlay .menucont{
+    transform: translateY(-120%);
+    transition: transform .6s cubic-bezier(.22,1,.36,1);
+}
+
+.menuOverlay.open{
+    opacity: 1;
+    visibility: visible;
+}
+
+.menuOverlay.open .menucont{
+    transform: translateY(0);
+}
 .menucont{
     width: 30%;
     height: 86%;

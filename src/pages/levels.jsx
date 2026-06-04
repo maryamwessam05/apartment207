@@ -21,7 +21,6 @@ const Levels = () => {
     return ( 
         <>
         <div className="levels">
-            <audio autoPlay src="../music/Abdel Halim Hafez - Nebtady Menen ElHekaya  Short version  عبد الحليم حافظ - نبتدى منين الحكاية.mp3"></audio>
             <div ref={yellowRef} className="yellow"></div>
              <div className="candle candle-left"></div>
             <div className="candle candle-right"></div>
