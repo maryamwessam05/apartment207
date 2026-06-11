@@ -1,13 +1,13 @@
 @font-face {
     font-family: "Lifta swash poster";
-    src: url("../assets/fonts/alfont_com_Liftaswashposter.ttf") format("truetype");
+    src: url("../fonts/alfont_com_Liftaswashposter.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
   }
   
   @font-face {
     font-family: "Awesome Shorten";
-    src: url("../assets/fonts/Awesome-Shorten-BF6781e4db99e2b.ttf") format("truetype");
+    src: url("../fonts/Awesome-\Shorten-BF6781e4db99e2b.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
   }
@@ -433,15 +433,21 @@ color: #2F1902;
 .levelone{
     width: 100%;
     height: 100vh;
-    background-image: url("../assets/levelone.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    
     overflow: hidden;
      display: flex;
      position: relative;
 }
-
+.levelvideo{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    
+}
 .timer {
 color: #FFF;
 font-variant-numeric: lining-nums tabular-nums;
@@ -636,4 +642,162 @@ line-height: 79.145%; /* 6.659px */
 
 .square:hover {
     filter: drop-shadow(0 0 6px #866747);
+}
+
+.inventory{
+    display: flex;
+width: 835px;
+height: 140px;
+justify-content: center;
+align-items: center;
+gap: 60px;
+background-image: url("../assets/inven.png");
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+position: absolute;
+        bottom: -8%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+}
+
+.obj{
+    display: flex;
+width: 79px;
+height: 79px;
+padding: 14px 15px 13px 15px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+border-radius: 39.5px;
+border: 1px solid #FFE4C1;
+background: #866747;
+box-shadow: 0 0 7.6px 0 #FFD09F inset, 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.invenobj{
+    opacity: 0.5;
+    scale: 1.2;
+}
+.invenobj2{
+    opacity: 0.5;
+    scale: 2;
+}
+.invenobj1{
+    opacity: 0.5;
+    scale: 0.6;
+}
+
+.keyroom{
+    width:auto !important;
+}
+
+.keyroom,
+.casetteroom,
+.tearoom,
+.letterroom,
+.evileyeroom {
+  position: absolute; 
+  width: auto;
+  height: auto;       
+  z-index: 9;
+}
+
+.keyroom {
+      top: 50%;
+    right: 17%;
+}
+
+.casetteroom{
+    top: 45.5%;
+    left: 18%;
+    scale: 1.5;
+}
+
+.tearoom{
+        top: 57%;
+    left: 45%;
+}
+
+.evileyeroom{
+    top: 44%;
+    right: 35.1%;
+    scale: 1.5;
+}
+
+.letterroom{
+    top: 74.8%;
+    left: 7%;
+    transform: rotateY(45deg);
+}
+
+.objectoverlay{
+    display: flex;
+width: 100%;
+height: 100vh;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 40px;
+background: rgba(0, 0, 0, 0.50);
+}
+
+.objectoverlay h1{
+    color: #FFF;
+text-align: center;
+font-family: "Awesome Shorten";
+font-size: 91.026px;
+font-style: normal;
+font-weight: 400;
+line-height: 79.145%; /* 72.042px */
+}
+.objectoverlay p{
+    color: #FFF;
+text-align: center;
+font-family: "Awesome Shorten";
+font-size: 50px;
+font-style: normal;
+font-weight: 400;
+line-height: 79.145%; /* 39.572px */
+}
+
+/* Object overlay wrapper — slide in from top, slide out to top */
+.objectoverlay-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: 998;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.objectoverlay-wrapper.overlay-enter {
+  animation: overlaySlideIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.objectoverlay-wrapper.overlay-exit {
+  animation: overlaySlideOut 0.45s cubic-bezier(0.55, 0, 0.78, 0) forwards;
+}
+
+@keyframes overlaySlideIn {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes overlaySlideOut {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
 }
