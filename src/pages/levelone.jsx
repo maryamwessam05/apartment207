@@ -65,7 +65,6 @@ const OBJECTS = {
   },
 };
 
-// inventory order matches your original JSX order
 const INVENTORY_ORDER = ['letter', 'evileye', 'tea', 'key', 'casette'];
 
 const LevelOne = () => {
@@ -75,7 +74,7 @@ const LevelOne = () => {
   const [foundObjects, setFoundObjects] = useState(new Set());
 
   const time = new Date();
-  time.setMinutes(time.getMinutes() + 5);
+  time.setMinutes(time.getMinutes() + 2);
 
   const { minutes, seconds } = useTimer({
     expiryTimestamp: time,
@@ -89,12 +88,11 @@ const LevelOne = () => {
   };
 
   const handleAddToInventory = () => {
-    // trigger exit animation, then clear
     setOverlayVisible(false);
     setTimeout(() => {
       setFoundObjects(prev => new Set([...prev, activeOverlay]));
       setActiveOverlay(null);
-    }, 500); // matches CSS transition duration
+    }, 500); 
   };
 
   return (
@@ -108,7 +106,6 @@ const LevelOne = () => {
         </div>
 
         <div className="icons">
-          <img className="clue" src={clues} alt="" />
           <img className="menuic" src={menu} alt="" onClick={() => setMenuOpen(true)} />
         </div>
       </div>
@@ -117,7 +114,6 @@ const LevelOne = () => {
         <h5>Gather the required items to solve level one</h5>
       </div>
 
-      {/* Inventory bar */}
       <div className="inventory">
         {INVENTORY_ORDER.map((id) => {
           const obj = OBJECTS[id];
@@ -134,7 +130,6 @@ const LevelOne = () => {
         })}
       </div>
 
-      {/* Room objects — hidden once collected */}
       {Object.values(OBJECTS).map((obj) =>
         !foundObjects.has(obj.id) ? (
           <img
@@ -148,7 +143,6 @@ const LevelOne = () => {
         ) : null
       )}
 
-      {/* Object overlay */}
       {activeOverlay && (
         <ObjectOverlay
           title={OBJECTS[activeOverlay].title}

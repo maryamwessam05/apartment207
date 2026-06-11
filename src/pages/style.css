@@ -345,7 +345,7 @@ top: 0;
   width: 334px;
   height: 424px;
 
-  background-image: url("../assets/letter.png");
+  background-image: url("../assets/letter2.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -800,4 +800,98 @@ line-height: 79.145%; /* 39.572px */
     transform: translateY(-100%);
     opacity: 0;
   }
+}
+
+.winscreen{
+        width: 100%;
+    height: 100vh;
+    background-image: url("../assets/storyframe.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+position: relative;
+}
+
+.winframepic{
+position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      top: 50%;
+    width: 63%;
+}
+
+.wintext{
+    display: flex;
+flex-direction: column;
+align-items: flex-end;
+gap: 16.964px;
+}
+
+.wintext h4{
+    color: #FFF;
+text-align: center;
+font-family: "Awesome Shorten";
+font-size: 67.855px;
+font-style: normal;
+font-weight: 400;
+line-height: 79.145%; /* 53.704px */
+}
+
+.wintext h1{
+    color: #FFF;
+text-align: center;
+font-family: "Awesome Shorten";
+font-size: 141.749px;
+font-style: normal;
+font-weight: 400;
+line-height: 79.145%; /* 112.187px */
+}
+.wincont{
+    display: flex;
+justify-content: center;
+align-items: center;
+gap: 30px;
+flex-direction: column;
+}
+
+.winbtns{
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 10px;
+}
+
+.loseframe{
+    width: 100%;
+    height: 100vh;
+    background-image: url("../assets/loseframe.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+gap: 25px;
+}
+
+.losebtns{
+    display: flex;
+justify-content: center;
+align-items: center;
+gap: 35px;
+}
+
+.loseframe h2{
+    color: #2F1902;
+text-align: center;
+font-family: "Awesome Shorten";
+font-size: 117.11px;
+font-style: normal;
+font-weight: 400;
+line-height: 79.145%; /* 92.687px */
 }

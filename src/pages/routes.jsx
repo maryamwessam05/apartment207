@@ -3,12 +3,15 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useMusic } from './musicprovider';
 import Splash from './splashscreen';
 import Levels from './levels';
+import Levels2 from './levels2';
 import LevelOne from './levelone';
 import Story from './story';
 import MenuOverlay from './menu';
 import { MusicProvider } from './musicprovider';
 import MusicButton from '../components/musicbtn';
 import { useClickSound } from '../hooks/useClickSound';
+import WinScreen from './winscreen';
+import LoseScreen from './losescreen';
 
 const Layout = () => {
     const location = useLocation();
@@ -34,6 +37,13 @@ const Layout = () => {
                 <Route path="/story" element={<Story />} />
                 <Route path="/levelone" element={<LevelOne />} />
                 <Route path="/menu" element={<MenuOverlay />} />
+                <Route path="/win" element={<WinScreen />} />
+                <Route path="/levels2" element={<Levels2 />} />
+                <Route path="/levels2" element={<Levels2 />} />
+                <Route path="/lose" element={<LoseScreen />} />
+
+
+
             </Routes>
         </>
     );
