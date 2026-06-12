@@ -12,6 +12,7 @@ import MusicButton from '../components/musicbtn';
 import { useClickSound } from '../hooks/useClickSound';
 import WinScreen from './winscreen';
 import LoseScreen from './losescreen';
+import Clues from './clues';
 
 const Layout = () => {
     const location = useLocation();
@@ -41,6 +42,8 @@ const Layout = () => {
                 <Route path="/levels2" element={<Levels2 />} />
                 <Route path="/levels2" element={<Levels2 />} />
                 <Route path="/lose" element={<LoseScreen />} />
+                <Route path="/clues" element={<Clues />} />
+
 
 
 

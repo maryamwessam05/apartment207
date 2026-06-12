@@ -16,7 +16,7 @@ const WinScreen = (props) => {
                             <h1>LEVEL ONE {props.level}</h1>
                         </div>
                         <div className="winbtns">
-                            <Link>
+                            <Link to={"/clues"}>
                             <Button text="View Clues" />
                             </Link>
                             <Link to={"/levels2"}> 
