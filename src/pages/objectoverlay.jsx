@@ -3,7 +3,7 @@ import "./style.css";
 import Button from '../components/button';
 import dingSrc from "../music/ding.mp3";
 
-const ObjectOverlay = ({ title, description, image, onAddToInventory, isVisible }) => {
+const ObjectOverlay = ({ title, description, image, onAddToInventory, onClose, isVisible }) => {
   const dingRef = useRef(null);
 
   const handleAddToInventory = () => {
@@ -21,7 +21,12 @@ const ObjectOverlay = ({ title, description, image, onAddToInventory, isVisible 
         <h1>{title}</h1>
         {description && <p>{description}</p>}
         <img src={image} alt={title} />
-<Button text="Add to Inventory" onClick={handleAddToInventory} />      </div>
+
+        {onClose
+          ? <Button text="Close" onClick={onClose} />
+          : <Button text="Add to Inventory" onClick={handleAddToInventory} />
+        }
+      </div>
     </div>
   );
 };

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import "./style.css";
+import { useNavigate } from 'react-router-dom';
 import { useTimer } from 'react-timer-hook';
-import clues from "../assets/clues.png";
 import menu from "../assets/settings.png";
 import MenuOverlay from "./menu";
 import videoSrc from "../assets/0607.mp4";
@@ -69,9 +69,10 @@ const INVENTORY_ORDER = ['letter', 'evileye', 'tea', 'key', 'casette'];
 
 const LevelOne = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeOverlay, setActiveOverlay] = useState(null); // object id
+  const [activeOverlay, setActiveOverlay] = useState(null);
   const [overlayVisible, setOverlayVisible] = useState(false);
   const [foundObjects, setFoundObjects] = useState(new Set());
+  const navigate = useNavigate();
 
   const time = new Date();
   time.setMinutes(time.getMinutes() + 2);
@@ -82,7 +83,7 @@ const LevelOne = () => {
   });
 
   const handleObjectClick = (id) => {
-    if (foundObjects.has(id)) return; // already collected
+    if (foundObjects.has(id)) return;
     setActiveOverlay(id);
     setOverlayVisible(true);
   };
@@ -92,19 +93,24 @@ const LevelOne = () => {
     setTimeout(() => {
       setFoundObjects(prev => new Set([...prev, activeOverlay]));
       setActiveOverlay(null);
-    }, 500); 
+    }, 500);
   };
+
+  useEffect(() => {
+    if (foundObjects.size === INVENTORY_ORDER.length) {
+      setTimeout(() => navigate('/win'), 600);
+    }
+  }, [foundObjects]);
 
   return (
     <div className="levelone">
-      <video className="levelvideo" src={videoSrc} autoPlay loop />
+      <video className="levelvideo" src={videoSrc} autoPlay loop muted />
 
       <div className="fixed">
         <div className="timer">
           {String(minutes).padStart(2, '0')}:
           {String(seconds).padStart(2, '0')}
         </div>
-
         <div className="icons">
           <img className="menuic" src={menu} alt="" onClick={() => setMenuOpen(true)} />
         </div>

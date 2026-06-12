@@ -813,7 +813,17 @@ line-height: 79.145%; /* 39.572px */
 justify-content: center;
 align-items: center;
 flex-direction: column;
-position: relative;
+  position: fixed;
+  top: -100%;
+  left: 0;
+
+  z-index: 100;
+  transition: top 0.8s cubic-bezier(0.76, 0, 0.24, 1);
+
+
+}
+.winscreen-visible {
+  top: 0;
 }
 
 .winframepic{
@@ -983,4 +993,18 @@ top: 61%;
     top: 53%;
     width: 6vw;
     right: 43%;
+}
+
+.winscreen {
+  position: fixed;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  transition: top 0.8s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.winscreen-visible {
+  top: 0;
 }
