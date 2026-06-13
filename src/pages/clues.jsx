@@ -48,7 +48,7 @@ const Clues = () => {
             <img className="backbtn" src={back} alt="" />
           </Link>
           <h2>Clues</h2>
-          <Link>
+          <Link to={"/levels2"}>
           <Button text="Home" />
           </Link>
         </div>

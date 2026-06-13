@@ -13,6 +13,7 @@ import { useClickSound } from '../hooks/useClickSound';
 import WinScreen from './winscreen';
 import LoseScreen from './losescreen';
 import Clues from './clues';
+import LevelTwo from './level2';
 
 const Layout = () => {
     const location = useLocation();
@@ -37,12 +38,13 @@ const Layout = () => {
                 <Route path="/levels" element={<Levels />} />
                 <Route path="/story" element={<Story />} />
                 <Route path="/levelone" element={<LevelOne />} />
+                <Route path="/leveltwo" element={<LevelTwo />} />
                 <Route path="/menu" element={<MenuOverlay />} />
                 <Route path="/win" element={<WinScreen />} />
                 <Route path="/levels2" element={<Levels2 />} />
                 <Route path="/levels2" element={<Levels2 />} />
                 <Route path="/lose" element={<LoseScreen />} />
-                <Route path="/clues" element={<Clues />} />
+                <Route path="/clue" element={<Clues />} />
 
 
 

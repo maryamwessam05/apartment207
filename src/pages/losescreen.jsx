@@ -12,10 +12,10 @@ const LoseScreen = () => {
                 <img src={clock} alt="" />
                 <h2>Time is up</h2>
                 <div className="losebtns">
-                    <Link>
+                    <Link to={"/levelone"}>
                     <Button text="Restart" />
                     </Link>
-                    <Link>
+                    <Link to={"/levels"}>
                     <Button text="Home" />
                     </Link>
                 </div>

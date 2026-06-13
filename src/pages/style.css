@@ -1008,3 +1008,13 @@ top: 61%;
 .winscreen-visible {
   top: 0;
 }
+
+.timer--urgent {
+  color: #e84040;
+  animation: pulse 0.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}

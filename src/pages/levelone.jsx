@@ -15,6 +15,7 @@ import keyOverlay from "../assets/keyoverlay.png";
 import teaOverlay from "../assets/teaoverlay.png";
 import evileyeOverlay from "../assets/evileyeoverlay.png";
 import casetteOverlay from "../assets/casetteoverlay.png";
+import timerSfx from "../music/timer.mp3";
 import ObjectOverlay from "./objectoverlay";
 
 const OBJECTS = {
@@ -72,15 +73,30 @@ const LevelOne = () => {
   const [activeOverlay, setActiveOverlay] = useState(null);
   const [overlayVisible, setOverlayVisible] = useState(false);
   const [foundObjects, setFoundObjects] = useState(new Set());
+  const timerAudioRef = useRef(null);
   const navigate = useNavigate();
 
-  const time = new Date();
-  time.setMinutes(time.getMinutes() + 2);
+  const expiryTimestamp = useRef(() => {
+    const t = new Date();
+    t.setMinutes(t.getMinutes() + 1);
+    return t;
+  }).current;
 
   const { minutes, seconds } = useTimer({
-    expiryTimestamp: time,
-    onExpire: () => console.log('Timer expired!'),
+    expiryTimestamp,
+    onExpire: () => navigate('/lose'),
   });
+
+  const isUrgent = minutes === 0 && seconds <= 20;
+
+  useEffect(() => {
+    if (isUrgent) {
+      timerAudioRef.current?.play();
+    } else {
+      timerAudioRef.current?.pause();
+      if (timerAudioRef.current) timerAudioRef.current.currentTime = 0;
+    }
+  }, [isUrgent]);
 
   const handleObjectClick = (id) => {
     if (foundObjects.has(id)) return;
@@ -105,9 +121,10 @@ const LevelOne = () => {
   return (
     <div className="levelone">
       <video className="levelvideo" src={videoSrc} autoPlay loop muted />
+      <audio ref={timerAudioRef} src={timerSfx} loop />
 
       <div className="fixed">
-        <div className="timer">
+        <div className={`timer${isUrgent ? ' timer--urgent' : ''}`}>
           {String(minutes).padStart(2, '0')}:
           {String(seconds).padStart(2, '0')}
         </div>
