@@ -32,6 +32,7 @@ const LevelTwo = () => {
   const [batteryCollected, setBatteryCollected] = useState(false);
   const timerAudioRef = useRef(null);
   const [puzzleOpen, setPuzzleOpen] = useState(false);
+  const [clueOpen, setClueOpen] = useState(false);
   const navigate = useNavigate();
 
   const expiryTimestamp = useRef(() => {
@@ -118,6 +119,11 @@ const LevelTwo = () => {
             <img src={battery} alt="battery" className="battery-img" />
           </div>
         )}
+
+        <div className="puzzle1clueselect" onClick={() => setClueOpen(true)}></div>
+        <div className={`puzzle1clue${clueOpen ? ' puzzle1clue--open' : ''}`}>
+            <img src={arrback} alt="" className='arrback' onClick={() => setClueOpen(false)} />
+        </div>
 
         <div className="puzzle2select"></div>
       </div>
