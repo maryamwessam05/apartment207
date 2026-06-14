@@ -9,8 +9,12 @@ import tea from "../assets/tea.png";
 import key from "../assets/key.png";
 import letter from "../assets/letter.png";
 import evileye from "../assets/evileye.png";
-import battery from "../assets/battery.png"; // 🔋 add this import
+import battery from "../assets/battery.png"; 
 import arrback from "../assets/arrback.png";
+import blueye from "../assets/blueeye.png"
+import puz3clue from "../assets/puz2clue.svg"
+import puz1solved from "../assets/puz1solved.png";
+import puz2solved from "../assets/puz2solved.png";
 
 const GREY = 'grey';
 const BLUE = 'blue';
@@ -33,6 +37,17 @@ const LevelTwo = () => {
   const timerAudioRef = useRef(null);
   const [puzzleOpen, setPuzzleOpen] = useState(false);
   const [clueOpen, setClueOpen] = useState(false);
+  const [puz2Open, setPuz2Open] = useState(false);
+  const [puz3Open, setPuz3Open] = useState(false);
+const [eyeUsed, setEyeUsed] = useState(false);
+const [puzzle1Solved, setPuzzle1Solved] = useState(false);
+const [puzzle2Solved, setPuzzle2Solved] = useState(false);
+const LETTERS = ['A', 'K', 'E', 'D'];
+const nextLetter = (l) => LETTERS[(LETTERS.indexOf(l) + 1) % LETTERS.length];
+const WIN_COMBO = ['A', 'E', 'K', 'D'];
+const [letterCombo, setLetterCombo] = useState(['A', 'A', 'A', 'A']);
+const [puzzle3Solved, setPuzzle3Solved] = useState(false);
+const [comboWon, setComboWon] = useState(false);
   const navigate = useNavigate();
 
   const expiryTimestamp = useRef(() => {
@@ -69,10 +84,20 @@ const LevelTwo = () => {
   const handleBatteryCollect = () => {
     setBatteryCollected(true);
   };
+  const handleLetterClick = (i) => {
+  if (comboWon) return;
+  const next = letterCombo.map((l, idx) => idx === i ? nextLetter(l) : l);
+  setLetterCombo(next);
+  if (next.join('') === WIN_COMBO.join('')) setComboWon(true);
+};
 
   return (
     <>
-      <div className="leveltwo">
+      <div className="leveltwo" style={
+        puzzle3Solved ? { backgroundImage: `url(${puz2solved})` } :
+        puzzle2Solved ? { backgroundImage: `url(${puz2solved})` } :
+        puzzle1Solved ? { backgroundImage: `url(${puz1solved})` } : {}
+        }>
         <div className="fixed">
           <div className={`timer${isUrgent ? ' timer--urgent' : ''}`}>
             {String(minutes).padStart(2, '0')}:
@@ -84,7 +109,9 @@ const LevelTwo = () => {
 
           <div className="inventory2">
             <div className="obj"><img className='let1' src={letter} /></div>
-            <div className="obj"><img className='eye2' src={evileye} /></div>
+            <div className="obj" style={eyeUsed ? { display: 'none' } : {}}> 
+            <img className='eye2' src={evileye} onClick={() => { if (puz2Open) setEyeUsed(true); }} />
+            </div>
             <div className="obj"><img src={tea} /></div>
             <div className="obj"><img src={key} /></div>
             <div className="obj"><img src={casette} /></div>
@@ -98,7 +125,10 @@ const LevelTwo = () => {
 
         <div className="puzzle1select" onClick={() => setPuzzleOpen(true)}></div>
         <div className={`puzzle1${puzzleOpen ? ' puzzle1--open' : ''}`}>
-            <img src={arrback} alt="" className='arrback' onClick={() => setPuzzleOpen(false)} />
+           <img src={arrback} alt="" className='arrback' onClick={() => {
+            setPuzzleOpen(false);
+            if (won) setPuzzle1Solved(true);
+            }} />
           <div className="circles">
             {grid.map((row, ri) => (
               <div className="circrow" key={ri}>
@@ -125,7 +155,38 @@ const LevelTwo = () => {
             <img src={arrback} alt="" className='arrback' onClick={() => setClueOpen(false)} />
         </div>
 
-        <div className="puzzle2select"></div>
+        <div className="puzzle2select" onClick={() => setPuz2Open(true)}></div>
+        <div className={`puzzle2${puz2Open ? ' puzzle2--open' : ''}`}>
+           <img src={arrback} alt="" className='arrback' onClick={() => {
+            setPuz2Open(false);
+            if (eyeUsed) setPuzzle2Solved(true);
+            }} />
+           <img src={blueye} alt="" className='blueye' style={eyeUsed ? { opacity: 1 } : {}} />
+           <img className={`puz3clue${eyeUsed ? ' puz3clue--visible' : ''}`} src={puz3clue} alt="" />
+        </div>
+
+        <div className="puzzle3select" onClick={() => setPuz3Open(true)}></div>
+        <div className={`puzzle3${puz3Open ? ' puzzle3--open' : ''}`}>
+        <img src={arrback} alt="" className='arrback' onClick={() => setPuz3Open(false)} /><img src={arrback} alt="" className='arrback' onClick={() => {
+            setPuz3Open(false);
+            if (comboWon) setPuzzle3Solved(true);
+            }} />
+        <div className="letframes">
+            {letterCombo.map((letter, i) => (
+            <div
+                key={i}
+                className={`letterframe${comboWon ? ' letterframe--won' : ''}`}
+                onClick={() => handleLetterClick(i)}
+            >
+                {letter}
+            </div>
+            ))}
+        </div>
+        {comboWon && <p className="combo-msg">Fit in the missing piece</p>}
+        </div>
+
+        <div className="puzzle4select"></div>
+        <div className="puzzle4"></div>
       </div>
     </>
   );

@@ -691,6 +691,7 @@ gap: 10px;
 border-radius: 39.5px;
 border: 1px solid #FFE4C1;
 background: #866747;
+cursor: pointer;
 box-shadow: 0 0 7.6px 0 #FFD09F inset, 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
@@ -1186,4 +1187,140 @@ z-index: -1;
 
 .puzzle1clue--open {
     z-index: 1;
+}
+
+.puzzle2select{
+position: absolute;
+    width: 64px;
+    height: 80px;
+    top: 28.3%;
+    left: 24.5%;
+    cursor: pointer;
+}
+
+.puzzle2{
+    width: 100%;
+    height: 100vh;
+          background-image: url("../assets/puzzle2.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+justify-content: center;
+align-items: center;
+position: absolute;
+top: 0;
+left: 0;
+z-index: -1;
+}
+
+.puzzle2--open{
+    z-index: 0;
+}
+
+.blueye{
+      margin-right: 18%;
+    margin-bottom: 9%;
+    scale: 1.1;
+    opacity: 0;
+}
+.puz3clue {
+  position: absolute;
+  right: 153px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.puz3clue--visible {
+  opacity: 1;
+}
+
+.puzzle3select{
+    position: absolute;
+    width: 126px;
+    height: 124px;
+    top: 69.3%;
+    left: 8.9%;
+    cursor: pointer;
+}
+
+.puzzle3{
+    width: 100%;
+    height: 100vh;
+          background-image: url("../assets/puzzle3.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+justify-content: center;
+align-items: center;
+position: absolute;
+top: 0;
+left: 0;
+z-index: -1;
+}
+
+.puzzle3--open{
+    z-index: 2;
+}
+
+.letframes{
+    display: flex;
+align-items: center;
+gap: 27px;
+    margin-left: 4%;
+}
+
+.letterframe{
+    display: flex;
+width: 166px;
+height: 348px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+background-image: url("../assets/letframe.png");
+background-repeat: no-repeat;
+ background-position: center;
+    background-size: cover;
+color: #2F1902;
+text-align: center;
+font-family: "Awesome Shorten";
+font-size: 212.162px;
+font-style: normal;
+font-weight: 400;
+line-height: 79.145%; /* 167.916px */
+transition: box-shadow 0.4s ease;
+  user-select: none;
+  cursor: pointer;
+}
+
+.letterframe--won {
+
+  filter: drop-shadow(0 0 12px rgba(126, 237, 118, 0.9));
+
+}
+
+.combo-msg {
+display: flex;
+    width: 410px;
+    height: 69px;
+    padding: 0 39.861px;
+    background-position: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 11.389px;
+    background-image: url("../assets/paper.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    animation: fadeInUp 0.5s ease forwards;
+    color: #2F1902;
+    font-family: "Awesome Shorten";
+    font-size: 50.352px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    top: 15%;
+    position: absolute;
 }
