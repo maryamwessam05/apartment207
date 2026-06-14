@@ -65,11 +65,12 @@ const Levels = () => {
                         <div className="levname">THE MESS</div>
                     </div>
                 </a>
-
-                <div className="lev2">
-                    <img src={level2} alt="" className="levimg" />
-                    <div className="levname">What You Hid</div>
-                </div>
+                <a href="/leveltwo" onClick={handleLevel1Click}>
+                    <div className="lev2">
+                        <img src={level2} alt="" className="levimg" />
+                        <div className="levname">What You Hid</div>
+                    </div>
+                </a>
 
                 <div className="lev3">
                     <img src={level3} alt="" className="levimg" />

@@ -17,8 +17,9 @@ import evileyeOverlay from "../assets/evileyeoverlay.png";
 import casetteOverlay from "../assets/casetteoverlay.png";
 import timerSfx from "../music/timer.mp3";
 import ObjectOverlay from "./objectoverlay";
+import MenuOverlay2 from './menu2';
 
-const OBJECTS = {
+export const OBJECTS = {
   letter: {
     id: 'letter',
     title: 'Letter',
@@ -66,7 +67,7 @@ const OBJECTS = {
   },
 };
 
-const INVENTORY_ORDER = ['letter', 'evileye', 'tea', 'key', 'casette'];
+export const INVENTORY_ORDER = ['letter', 'evileye', 'tea', 'key', 'casette'];
 
 const LevelOne = () => {
   const [menuOpen, setMenuOpen] = useState(false);

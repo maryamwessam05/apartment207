@@ -296,6 +296,7 @@ padding: 0 20px;
 width: 100%;
 position: absolute;
 top: 0;
+z-index: 99999999;
 
 }
 .icons{
@@ -660,7 +661,25 @@ position: absolute;
         left: 50%;
         transform: translate(-50%, -50%);
 }
-
+.inventory2{
+    display: flex;
+width: 835px;
+height: 140px;
+justify-content: center;
+align-items: center;
+gap: 50px;
+background-image: url("../assets/inven.png");
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+position: absolute;
+        bottom: -408%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+}
+.battery-inv {
+ transform: scale(0.3);
+}
 .obj{
     display: flex;
 width: 79px;
@@ -691,7 +710,12 @@ box-shadow: 0 0 7.6px 0 #FFD09F inset, 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 .keyroom{
     width:auto !important;
 }
-
+.let1{
+    scale: 0.6;
+}
+.eye2{
+    scale: 2;
+}
 .keyroom,
 .casetteroom,
 .tearoom,
@@ -761,7 +785,6 @@ font-weight: 400;
 line-height: 79.145%; /* 39.572px */
 }
 
-/* Object overlay wrapper — slide in from top, slide out to top */
 .objectoverlay-wrapper {
   position: fixed;
   inset: 0;
@@ -1017,4 +1040,119 @@ top: 61%;
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50%       { opacity: 0.5; }
+}
+
+.leveltwo{
+    width: 100%;
+    height: 100vh;
+          background-image: url("../assets/level2.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+justify-content: flex-start;
+align-items: center;
+position: relative;
+}
+
+.puzzle1select{
+       position: absolute;
+    width: 80px;
+    height: 80px;
+    top: 34.3%;
+    right: 37.8%;
+cursor: pointer;
+}
+
+.puzzle1{
+    width: 100%;
+    height: 100vh;
+          background-image: url("../assets/puzzle1.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+justify-content: center;
+align-items: center;
+position: absolute;
+top: 0;
+left: 0;
+z-index: -1;
+}
+.puzzle1--open {
+  z-index: 0;
+}
+.circles{
+    display: flex;
+width: 192.715px;
+flex-direction: column;
+align-items: flex-start;
+gap: 33.037px;
+margin-right: 31px;
+    margin-top: 10px;
+}
+
+.circrow{
+    display: flex;
+align-items: center;
+gap: 38.543px;
+}
+
+.circle{
+    width: 38.543px;
+height: 38.543px;
+background-color:  #B6B6B6;
+border-radius: 50%;
+cursor: pointer;
+transition: background-color 0.25s ease;
+}
+
+.arrback{
+    position: absolute;
+    left: 16%;
+        transform: translate(-50%, -50%);
+      top: 50%;
+      cursor: pointer;
+}
+
+
+
+.circle--grey {
+  background-color: #B6B6B6;
+}
+
+.circle--blue {
+  background-color: #38B0F5;
+  box-shadow: 0 0 8px rgba(74, 144, 217, 0.6);
+}
+
+.circle--yellow {
+  background-color: #FFD94F;
+  box-shadow: 0 0 8px rgba(245, 200, 66, 0.6);
+}
+
+.battery-reveal {
+  position: absolute;
+  top: 50%;
+  right: 20%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  cursor: pointer;
+  animation: batteryPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.battery-img {
+
+  filter: drop-shadow(0 0 12px rgba(245, 200, 66, 0.9));
+}
+
+@keyframes batteryPop {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
 }

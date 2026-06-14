@@ -11,6 +11,7 @@ import swish from "../music/swish.mp3";
 const Levels2 = () => {
     const yellowRef = useRef(null);
     const lev1Ref = useRef(null);
+    const lev2Ref = useRef(null);
     const levelsPageRef = useRef(null);
     const navigate = useNavigate();
 
@@ -28,15 +29,15 @@ const Levels2 = () => {
     const audio = new Audio(swish);
     audio.play();
 
-    const rect = lev1Ref.current.getBoundingClientRect();
+    const rect = lev2Ref.current.getBoundingClientRect();
     const originX = rect.left + rect.width / 2;
     const originY = rect.top + rect.height / 2;
 
     const tl = gsap.timeline({
-        onComplete: () => navigate("/story")
+        onComplete: () => navigate("/leveltwo")
     });
 
-    tl.to(lev1Ref.current, {
+    tl.to(lev2Ref.current, {
         scale: 1.15,
         duration: 0.15,
         ease: 'power2.out'
@@ -66,10 +67,13 @@ const Levels2 = () => {
                     </div>
                 </a>
 
-                <div className="lev2">
-                    <img src={level2} alt="" className="levimg" />
-                    <div className="levname">What You Hid</div>
-                </div>
+                 <a href="/leveltwo" onClick={handleLevel1Click}>
+                    <div className="lev2" ref={lev2Ref}>
+                        <img src={level2} alt="" className="levimg" />
+                        <div className="levname">What You Hid</div>
+                    </div>                
+                </a>                                                
+                          
 
                 <div className="lev3">
                     <img src={level3} alt="" className="levimg" />
