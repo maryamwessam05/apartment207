@@ -23,6 +23,7 @@ import linered from "../assets/linered.svg";
 import casclosed from "../assets/casclosed.png";
 import casetteSfx from "../music/casette.mp3";
 import radioSfx from "../music/radio.mp3";
+import Button from '../components/button';
 
 const GREY = 'grey';
 const BLUE = 'blue';
@@ -69,9 +70,13 @@ const LevelTwo = () => {
   const [puz2Open, setPuz2Open] = useState(false);
   const [puz3Open, setPuz3Open] = useState(false);
   const [puz4Open, setPuz4Open] = useState(false);
+  const [puz5Open, setPuz5Open] = useState(false);
   const [eyeUsed, setEyeUsed] = useState(false);
   const [puzzle1Solved, setPuzzle1Solved] = useState(false);
   const [puzzle2Solved, setPuzzle2Solved] = useState(false);
+  const [numCombo, setNumCombo] = useState([0, 0, 0, 0]);  
+    const [numGlow, setNumGlow] = useState(false);
+    const WIN_NUM = [0, 1, 5, 0];
   const LETTERS = ['A', 'K', 'E', 'D'];
   const nextLetter = (l) => LETTERS[(LETTERS.indexOf(l) + 1) % LETTERS.length];
   const WIN_COMBO = ['A', 'E', 'K', 'D'];
@@ -176,9 +181,21 @@ const LevelTwo = () => {
     setCircleRotation(prev => prev - 20);
   };
 
+  const handleNumClick = (i) => {
+  if (numGlow) return;
+  setNumCombo(prev => prev.map((n, idx) => idx === i ? (n + 1) % 10 : n));
+};
+
+const handleNumCheck = () => {
+  if (numCombo.join('') === WIN_NUM.join('')) {
+    setNumGlow(true);
+    setTimeout(() => navigate('/win2'), 1200);
+  }
+};
+
   return (
     <>
-      {/* Audio elements */}
+ 
       <audio ref={timerAudioRef} src="/assets/music/timer.mp3" loop />
       <audio ref={casetteAudioRef} src={casetteSfx} />
       <audio ref={radioAudioRef} src={radioSfx} loop />
@@ -205,7 +222,7 @@ const LevelTwo = () => {
             <div className="obj"><img src={tea} /></div>
             <div className="obj"><img src={key} /></div>
 
-            {/* Cassette — hidden once inserted */}
+            
             {cassetteInInventory && (
               <div
                 className="obj"
@@ -216,7 +233,7 @@ const LevelTwo = () => {
               </div>
             )}
 
-            {/* Battery — hidden once used to power cassette */}
+           
             {batteryCollected && !batteryUsed && (
               <div className="obj" onClick={handleBatteryInventoryClick} style={{ cursor: 'pointer' }}>
                 <img src={battery} className="battery-inv" />
@@ -289,10 +306,9 @@ const LevelTwo = () => {
           {comboWon && <p className="combo-msg">Fit in the missing piece</p>}
         </div>
 
-        {/* Puzzle 4 — cassette player */}
+      
         <div className="puzzle4select" onClick={() => setPuz4Open(true)}></div>
-        <div
-          className={`puzzle4${puz4Open ? ' puzzle4--open' : ''}`}
+        <div className={`puzzle4${puz4Open ? ' puzzle4--open' : ''}`}
           style={casOpen ? { backgroundImage: `url(${casclosed})` } : {}}
         >
           <img src={arrback} alt="" className='arrback' onClick={() => setPuz4Open(false)} />
@@ -329,6 +345,24 @@ const LevelTwo = () => {
             <img src={frontbtn} alt="forward" onClick={handleFront} style={{ cursor: 'pointer' }} />
           </div>
         </div>
+
+        <div className="puzzle5select" onClick={() => setPuz5Open(true)}></div>
+        <div className={`puzzle5${puz5Open ? ' puzzle5--open' : ''}`}>
+        <img src={arrback} alt="" className='arrback' onClick={() => setPuz5Open(false)} />
+        <div className="password">
+            {numCombo.map((num, i) => (
+            <div
+                key={i}
+                className={`numbtn${numGlow ? ' numbtn--glow' : ''}`}
+                onClick={() => handleNumClick(i)}
+            >
+                {num}
+            </div>
+            ))}
+        </div>
+        <Button text="CHECK" onClick={handleNumCheck} />
+        </div>
+
       </div>
     </>
   );
