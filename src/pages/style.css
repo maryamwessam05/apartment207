@@ -661,6 +661,22 @@ position: absolute;
         left: 50%;
         transform: translate(-50%, -50%);
 }
+.invent2{
+    display: flex;
+width: 1291px;
+height: 157px;
+justify-content: center;
+align-items: center;
+gap: 46px;
+background-image: url("../assets/inven2.png");
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+position: absolute;
+        bottom: -8%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+}
 .inventory2{
     display: flex;
 width: 835px;
@@ -1081,7 +1097,7 @@ left: 0;
 z-index: -1;
 }
 .puzzle1--open {
-  z-index: 0;
+  z-index: 5;
 }
 .circles{
     display: flex;
@@ -1507,4 +1523,250 @@ cursor: pointer;
   filter: drop-shadow(0 0 16px rgba(100, 220, 100, 0.95));
   color: #2a8a2a;
   transition: filter 0.3s ease, color 0.3s ease;
+}
+
+.level3{
+       width: 100%;
+    height: 100vh;
+          background-image: url("../assets/level3.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+justify-content: flex-start;
+align-items: center;
+position: relative;
+
+}
+
+.room-object {
+    position: absolute;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+}
+
+.room-object:hover {
+    
+     filter:
+        drop-shadow(0 0 10px #866747)
+        drop-shadow(0 0 25px rgba(134, 103, 71, 0.7));
+
+}
+
+.room-teapot {  
+    top: 40%;  
+    left: 20%; }
+
+.room-salt   {
+        top: 46%;
+    left: 15%;
+    scale: 0.6;
+    filter: brightness(0.7);
+    transform: rotateX(17deg); }
+
+.room-mitten {
+     top: 33%;
+    left: 35.2%;
+    transform: rotate(180deg);
+    scale: 0.65;
+    filter: brightness(0.8); }
+
+.room-cup    { 
+     top: 55%;
+    filter: brightness(0.8);
+    left: 56%; }
+
+.room-whisk  {
+        top: 62%;
+    left: 75%;
+    transform: rotate(99deg);
+}
+
+.room-lemon  {   
+      top: 44%;
+    left: 35%;
+    scale: 0.7;   
+     filter: brightness(0.7);
+    transform: rotate(27deg); }
+
+.room-board  {
+    top: 35%;
+    left: 62%;}
+
+.room-spoon  {    
+     top: 47.5%;
+    left: 80%;
+    transform: rotate(106deg) rotateY(56deg); }
+
+.inv-teapot, .inv-salt, .inv-mitten, .inv-cup,
+.inv-whisk, .inv-lemon, .inv-board, .inv-spoon {
+    
+    object-fit: contain;
+    transition: opacity 0.3s ease;
+    scale: 0.7;
+}
+
+.puzzle1room2clue{
+           width: 100%;
+    height: 100vh;
+          background-image: url("../assets/puzzle1room2.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+justify-content: flex-start;
+align-items: center;
+position: relative;
+    background-position-y: -300px;
+z-index: -1;
+}
+.puzzle1room2clue--open{
+    z-index: 9;
+}
+
+.puzzleroom1clueselect{
+position: absolute;
+    width: 88px;
+    height: 155px;
+    top: 29.3%;
+    right: 18.8%;
+    cursor: pointer;
+
+}
+.puzzle1room2select{
+position: absolute;
+    width: 76px;
+    height: 60px;
+    top: 23.3%;
+    right: 39.8%;
+    cursor: pointer;
+
+}
+
+.puzzle1room2{
+           width: 100%;
+    height: 100vh;
+          background-image: url("../assets/puzzle1room2play.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+justify-content: center;
+align-items: center;
+position: absolute;
+top: 0;
+left: 0;
+z-index: -1;
+}
+.puzzle1room2--open{
+    z-index: 80;
+}
+
+.blocks{
+    display: grid;
+width: 438.837px;
+height: 370px;
+grid-template-rows: repeat(2,minmax(0,1fr));
+grid-template-columns: repeat(2,minmax(0,1fr));
+grid-auto-flow: row;
+    margin-right: 42px;
+    margin-bottom: 15px;
+}
+
+.arrow{
+    display: flex;
+padding: 43.023px;
+justify-content: center;
+align-items: center;
+gap: 86.047px;
+align-self: stretch;
+grid-row: span 1;
+grid-column: span 1;
+justify-self: stretch;
+background:#A78C69;
+cursor: pointer;
+border: 0.86px solid rgba(46, 32, 11, 0.45);
+}
+
+.codeclue2select{
+        position: absolute;
+    width: 116px;
+    height: 156px;
+    top: 53.3%;
+    right: 64.8%;
+    cursor: pointer;
+
+    z-index: 10;
+    
+}
+
+.codeclue2{
+               width: 100%;
+    height: 100vh;
+          background-image: url("../assets/codeclue2.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+justify-content: center;
+align-items: center;
+position: absolute;
+top: 0;
+left: 0;
+z-index: -2;
+}
+
+.codeclue2--open{
+    z-index: 9;
+}
+
+.finalpuzzleselect{
+    position: absolute;
+    width: 185px;
+    height: 382px;
+    top: 18.3%;
+    right: 46.8%;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.finalpuzzle{
+                   width: 100%;
+    height: 100vh;
+          background-image: url("../assets/finalpuzzle.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 140% 140%;
+    display: flex;
+justify-content: center;
+align-items: center;
+position: absolute;
+top: 0;
+left: 0;
+z-index: -2;
+}
+
+.finalpuzzle--open{
+    z-index: 88;
+}
+
+.pas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.level4{
+          width: 100%;
+    height: 100vh;
+          background-image: url("../assets/levelfour.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+justify-content: flex-start;
+align-items: center;
+position: relative;
 }

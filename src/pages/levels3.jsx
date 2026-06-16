@@ -12,6 +12,7 @@ const Levels3 = () => {
     const yellowRef = useRef(null);
     const lev1Ref = useRef(null);
     const lev2Ref = useRef(null);
+    const lev3Ref = useRef(null);
     const levelsPageRef = useRef(null);
     const navigate = useNavigate();
 
@@ -23,21 +24,21 @@ const Levels3 = () => {
         });
     }, []);
 
-    const handleLevel1Click = (e) => {
+    const handleLevelClick = (ref, destination) => (e) => {
     e.preventDefault();
 
     const audio = new Audio(swish);
     audio.play();
 
-    const rect = lev2Ref.current.getBoundingClientRect();
+    const rect = ref.current.getBoundingClientRect();
     const originX = rect.left + rect.width / 2;
     const originY = rect.top + rect.height / 2;
 
     const tl = gsap.timeline({
-        onComplete: () => navigate("/leveltwo")
+        onComplete: () => navigate(destination)
     });
 
-    tl.to(lev2Ref.current, {
+    tl.to(ref.current, {
         scale: 1.15,
         duration: 0.15,
         ease: 'power2.out'
@@ -60,25 +61,26 @@ const Levels3 = () => {
             <h2 className='leveltitle'>LEVELS</h2>
             <div className="levelcont">
 
-                <a href="/story" onClick={handleLevel1Click}>
-                    <div className="lev" ref={lev1Ref}>
-                        <img src={level1} alt="" className="levimg" />
-                        <div className="levname">THE MESS</div>
-                    </div>
+               <a href="/story" onClick={handleLevelClick(lev1Ref, "/story")}>
+                <div className="lev" ref={lev1Ref}>
+                    <img src={level1} alt="" className="levimg" />
+                    <div className="levname">THE MESS</div>
+                </div>
                 </a>
 
-                 <a href="/leveltwo" onClick={handleLevel1Click}>
+                <a href="/leveltwo" onClick={handleLevelClick(lev2Ref, "/leveltwo")}>
                     <div className="lev2" ref={lev2Ref}>
                         <img src={level2} alt="" className="levimg" />
                         <div className="levname">What You Hid</div>
-                    </div>                
-                </a>                                                
-                          
+                    </div>
+                </a>
 
-                <div className="lev3">
-                    <img src={level3} alt="" className="levimg" />
-                    <div className="levname">THE TRUTH</div>
-                </div>
+                <a href="/levelthree" onClick={handleLevelClick(lev3Ref, "/levelthree")}>
+                    <div className="lev3" ref={lev3Ref}>  {/* ← ref was missing here */}
+                        <img src={level3} alt="" className="levimg" />
+                        <div className="levname">THE TRUTH</div>
+                    </div>
+                </a>
 
             </div>
         </div>

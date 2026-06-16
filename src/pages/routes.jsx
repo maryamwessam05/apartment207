@@ -19,6 +19,8 @@ import MenuOverlay2 from './menu2';
 import WinScreen2 from './winscreen2';
 import Clues2 from './clues2';
 import Levels3 from './levels3';
+import LevelThree from './levelthree';
+import Level4 from './levelfour';
 
 const Layout = () => {
     const location = useLocation();
@@ -44,6 +46,8 @@ const Layout = () => {
                 <Route path="/story" element={<Story />} />
                 <Route path="/levelone" element={<LevelOne />} />
                 <Route path="/leveltwo" element={<LevelTwo />} />
+                <Route path="/levelthree" element={<LevelThree />} />
+                <Route path="/level4" element={<Level4 />} />
                 <Route path="/menu" element={<MenuOverlay2 />} />
                 <Route path="/menu2" element={<MenuOverlay />} />
                 <Route path="/win" element={<WinScreen />} />
