@@ -2,6 +2,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import "./style.css"
 import dingSrc from "../music/ding.mp3";
 import Win from './win';
+import { useNavigate } from 'react-router-dom';
+import { useTimer } from 'react-timer-hook';
+import menu from "../assets/settings.png";
+import MenuOverlayChallenge from './menuchallenge';
 const roomContext = require.context('../assets/rooms', false, /\.(png|jpe?g|webp)$/);
 const objectContext = require.context('../assets/objects', false, /\.(png|jpe?g|webp)$/);
 
@@ -41,12 +45,37 @@ const SPOT_POSITIONS = [
 ];
 
 const Challenge = () => {
+        const [menuOpen, setMenuOpen]   = useState(false);
+    
     const [background, setBackground] = useState(null);
     const [levelObjects, setLevelObjects] = useState([]);
     const [foundIds, setFoundIds] = useState([]);
     const [showWin, setShowWin] = useState(false);
+        const timerAudioRef = useRef(null);
+            const navigate      = useNavigate();
+        
     const dingRef = useRef(null);
-
+        const expiryTimestamp = useRef(() => {
+            const t = new Date();
+            t.setMinutes(t.getMinutes() + 15);
+            return t;
+        }).current;
+    
+        const { minutes, seconds } = useTimer({
+            expiryTimestamp,
+            onExpire: () => navigate('/losechallenge'),
+        });
+    
+        const isUrgent = minutes === 0 && seconds <= 20;
+    
+        useEffect(() => {
+            if (isUrgent) {
+                timerAudioRef.current?.play();
+            } else {
+                timerAudioRef.current?.pause();
+                if (timerAudioRef.current) timerAudioRef.current.currentTime = 0;
+            }
+        }, [isUrgent]);
     const startNewChallenge = () => {
     const randomBg = BACKGROUNDS[Math.floor(Math.random() * BACKGROUNDS.length)];
     const chosenObjects = shuffle(OBJECTS).slice(0, 5);
@@ -97,6 +126,15 @@ const Challenge = () => {
     return (
         <div className="challenge-wrapper">
             <audio ref={dingRef} src={dingSrc} preload="auto" />
+            <div className="fixed">
+                    <div className={`timer${isUrgent ? ' timer--urgent' : ''}`}>
+                        {String(minutes).padStart(2, '0')}:
+                        {String(seconds).padStart(2, '0')}
+                    </div>
+                    <div className="icons">
+                        <img className="menuic" src={menu} alt="" onClick={() => setMenuOpen(true)} />
+                    </div>
+                </div>
 
             <div
             className="challenge-background"
@@ -129,6 +167,8 @@ const Challenge = () => {
             </div>
 
             {showWin && <Win onNext={startNewChallenge} />}
+            <MenuOverlayChallenge isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
+            
         </div>
     );
 };

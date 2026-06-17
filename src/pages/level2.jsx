@@ -93,7 +93,7 @@ const LevelTwo = () => {
 
   const { minutes, seconds } = useTimer({
     expiryTimestamp,
-    onExpire: () => navigate(''),
+    onExpire: () => navigate('/lose2'),
   });
 
   const isUrgent = minutes === 0 && seconds <= 20;

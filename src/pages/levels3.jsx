@@ -7,6 +7,8 @@ import level1 from "../assets/1.png";
 import level2 from "../assets/2.png";
 import level3 from "../assets/3.png";
 import swish from "../music/swish.mp3";
+import { Link } from 'react-router-dom';
+import Button from '../components/button';
 
 const Levels3 = () => {
     const yellowRef = useRef(null);
@@ -84,6 +86,10 @@ const Levels3 = () => {
 
             </div>
         </div>
+            <Link className='chalbtn' to={"/challenge"}>
+                <Button text="Start Challenges" />
+            
+            </Link>
         </>
     );
 }

@@ -13,9 +13,9 @@ import board from "../assets/board.png"
 import spoon from "../assets/spoon.png"
 import ding from "../music/ding.mp3"
 import arrback from "../assets/arrback.png";
-import MenuOverlay2 from './menu2';
 import arrow from "../assets/arrow.svg"
 import Button from '../components/button';
+import MenuOverlay3 from './menu3';
 
 const INVENTORY_ORDER = ['teapot', 'salt', 'mitten', 'cup', 'whisk', 'lemon', 'board', 'spoon'];
 
@@ -50,13 +50,13 @@ const LevelThree = () => {
 
     const expiryTimestamp = useRef(() => {
         const t = new Date();
-        t.setMinutes(t.getMinutes() + 50);
+        t.setMinutes(t.getMinutes() + 15);
         return t;
     }).current;
 
     const { minutes, seconds } = useTimer({
         expiryTimestamp,
-        onExpire: () => navigate('/lose'),
+        onExpire: () => navigate('/lose3'),
     });
 
     const isUrgent = minutes === 0 && seconds <= 20;
@@ -244,7 +244,7 @@ const handleNumCheck = () => {
 
                     </div>
                 </div>
-                <MenuOverlay2 isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
+                <MenuOverlay3 isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
 
             </div>
         </>
