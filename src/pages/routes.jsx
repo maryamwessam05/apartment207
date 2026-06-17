@@ -22,6 +22,7 @@ import Levels3 from './levels3';
 import LevelThree from './levelthree';
 import Level4 from './levelfour';
 import WinScreen3 from './winscreen3';
+import Challenge from './challenges';
 
 const Layout = () => {
     const location = useLocation();
@@ -60,6 +61,8 @@ const Layout = () => {
                 <Route path="/lose2" element={<LoseScreen2 />} />
                 <Route path="/clue" element={<Clues />} />
                 <Route path="/clues2" element={<Clues2 />} />
+                <Route path="/challenge" element={<Challenge />} />
+
 
 
 

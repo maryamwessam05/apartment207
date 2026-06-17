@@ -5,7 +5,7 @@ import Button from '../components/button';
 import { Link } from 'react-router-dom';
 import tablaSrc from "../music/tabla.mp3";
 
-const WinScreen = (props) => {
+const Win = ({ onNext }) => {
     const [visible, setVisible] = useState(false);
     const tablaRef = useRef(null);
 
@@ -26,15 +26,13 @@ const WinScreen = (props) => {
                 <div className="wincont">
                     <div className="wintext">
                         <h4>CONGRATS YOU PASSED</h4>
-                        <h1>LEVEL ONE {props.level}</h1>
+                        <h1>CHALLENGE</h1>
                     </div>
                     <div className="winbtns">
-                        <Link to={"/clues"}>
-                            <Button text="View Clues" />
+                        <Link to={"/levels3"}>
+                            <Button text="Exit" />
                         </Link>
-                        <Link to={"/levels2"}>
-                            <Button text="Next Level" />
-                        </Link>
+                        <Button text="Next Challenge" onClick={onNext} />
                     </div>
                 </div>
             </div>
@@ -42,4 +40,4 @@ const WinScreen = (props) => {
     );
 }
 
-export default WinScreen;
+export default Win;
