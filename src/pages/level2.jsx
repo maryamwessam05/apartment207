@@ -17,6 +17,8 @@ import puz1solved from "../assets/puz1solved.png";
 import puz2solved from "../assets/puz2solved.png";
 import frontbtn from "../assets/btno.svg";
 import backbtn from "../assets/btnw.svg";
+import timerSfx from "../music/timer.mp3";
+
 import cascircle from "../assets/cascircle.png";
 import time from "../assets/time.svg";
 import linered from "../assets/linered.svg";
@@ -87,7 +89,7 @@ const LevelTwo = () => {
 
   const expiryTimestamp = useRef(() => {
     const t = new Date();
-    t.setMinutes(t.getMinutes() + 1);
+    t.setMinutes(t.getMinutes() + 8);
     return t;
   }).current;
 
@@ -196,7 +198,7 @@ const handleNumCheck = () => {
   return (
     <>
  
-      <audio ref={timerAudioRef} src="/assets/music/timer.mp3" loop />
+<audio ref={timerAudioRef} src={timerSfx} loop />
       <audio ref={casetteAudioRef} src={casetteSfx} />
       <audio ref={radioAudioRef} src={radioSfx} loop />
 
